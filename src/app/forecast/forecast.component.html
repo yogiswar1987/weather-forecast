@@ -1,0 +1,23 @@
+<div class="wrap">
+   <div class="search">
+      <input type="text" [(ngModel)]="queryString" class="searchTerm" placeholder="city,country code eg.Bangalore,in">
+      <button type="submit" class="searchButton" (click)="search()">
+        <i class="fa fa-search">Search</i>
+     </button>
+   </div>
+</div>
+<div>
+<p>{{forecastsErrors$ | async}}</p>
+</div>
+<div style="position:absolute;top:60px">
+<table style="width:100%">
+<tr *ngFor="let forecast of (forecasts$ | async) | slice:0:1;">
+<th>City</th>
+<th *ngFor="let listItem of forecast.list | slice:0:8;">{{listItem.dt_txt | date:'shortTime':'UTC'}}</th>
+</tr>
+<tr *ngFor="let forecast of (forecasts$ | async)">
+<td>{{forecast.city.name}}</td>
+<td *ngFor="let listItem of forecast.list | slice:0:8;">{{listItem.main.temp}}</td>
+</tr>
+</table>
+</div>
