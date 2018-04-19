@@ -13,7 +13,7 @@
 <table style="width:100%">
 <tr *ngFor="let forecast of (forecasts$ | async) | slice:0:1;">
 <th>City</th>
-<th *ngFor="let listItem of forecast.list | slice:0:8;">{{listItem.dt_txt | date:'shortTime':'UTC'}}</th>
+<th *ngFor="let listItem of forecast.list | slice:0:8;">{{listItem.dt_txt+'z' | date:'shortTime'}}</th>
 </tr>
 <tr *ngFor="let forecast of (forecasts$ | async)">
 <td>{{forecast.city.name}}</td>
